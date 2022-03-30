@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+    <title>Login</title>
+    
+</head>
+<body>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for category, msg in messages %}
+    {% if category == 'error' %}  
+        <div class="alert alert-danger alter-dismissable fade show " id="close" role="alert">
+        {{msg}}
+            <button class="p-2" onclick="close()" type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% else %}
+        <div class="alert alert-danger alter-dismissable fade show " id="close" role="alert">
+        {{msg}}
+            <button class="p-2" onclick="close()" type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+    <div class="w-screen flex h-screen overflow-hidden">
+        <!-- left  -->
+        <div class="hidden md:flex w-1/2 h-full items-center justify-center">
+            <img src="{{url_for('static',filename='img/login.png')}}" alt="">
+        </div>
+        <!-- right  -->
+        <div class="flex flex-col flex-1  md:m-16 lg:mx-40 p-10 w-full items-center space-y-5 justify-center bg-gray-100 rounded-md">
+            <div><img src="{{url_for('static',filename='img/govote.png')}}" class="w-32 flex" alt=""></div>
+            <span class="text-2xl md:text-4xl text-red-600 ">WELCOME BACK</span>
+            <span class="">Please login to proceed</span>
+            <!-- form  -->
+            <form action="" method="post"  class="flex flex-col space-y-5 items-center">
+                <div class="flex flex-col p-4 space-y-2">
+                    <span>USERNAME</span>
+                    <input type="text " class="w-80 p-2" placeholder="Username" name="username" id="username">
+                </div>
+                <div class="flex flex-col space-y-2 ">
+                    <span>PASSWORD</span>
+                    <input type="password" class="w-80 p-2" placeholder="Password" name="password" id="password">
+                </div>
+                <div><button class="w-32 p-3 bg-red-500 hover:bg-red-600 text-white rounded-md">Login</button></div>
+                
+            </form>
+            <div class="p-2">Haven't register yet? <a class="hover:text-red-600" href="/register">Register now</a></div>
+            
+        </div>
+        
+
+    </div>
+</body>
+<script>
+    function close(){
+        var x=document.getElementById("close");
+        x.style.display="none"
+
+    }
+</script>
+</html>

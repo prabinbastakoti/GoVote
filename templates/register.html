@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+    <div class="w-screen flex h-screen overflow-hidden">
+        <!-- left  -->
+        <div class="hidden md:flex w-1/2 h-full items-center justify-center">
+            <img src="{{url_for('static',filename='img/login.png')}}" alt="">
+        </div>
+        <!-- right  -->
+        <div class="flex flex-col flex-1 md:mx-16 lg:mx-40 p-10 w-full items-center space-y-3 justify-center bg-gray-100 rounded-md">
+            <div><img src="{{url_for('static',filename='img/govote.png')}}" class="w-32 flex" alt=""></div>
+            <span class="text-2xl md:text-4xl text-red-600 ">GoVote</span>
+            <!-- form  -->
+            <form action="" method="post"  class="flex flex-col space-y-3 items-center">
+                <div class="flex flex-col   space-y-2">
+                    <span>USERNAME</span>
+                    <input type="text " class="w-80 p-2" placeholder="Username" name="username" id="username">
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <span>EMAIL</span>
+                    <input type="email" class="w-80 p-2" placeholder="Email Addreses" name="email" id="email">
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <span>PHONE</span>
+                    <input type="tel" class="w-80 p-2" placeholder="Phone Number" name="phone" id="phone">
+                </div>
+                <div class="flex flex-col space-y-2 ">
+                    <span>CREATE PASSWORD</span>
+                    <input type="password" class="w-80 p-2" placeholder="Password" name="password" id="password">
+                </div>
+                <div class="p-2"><button class="w-32 p-3 bg-red-500 hover:bg-red-600 text-white rounded-md">Sign In</button></div>
+                
+            </form>
+            <div class="p-2">Already have account?  <a class="hover:text-red-600" href="/login">Login</a></div>
+           
+        </div>
+        
+
+    </div>
+        
+    
+{% endblock %}

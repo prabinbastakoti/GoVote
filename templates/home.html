@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+    <title>Home</title>
+    
+</head>
+<body>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, msg in messages %}
+            {% if category == 'error' %}  
+                <div class="alert alert-danger alter-dismissable fade show " role="alert">
+                {{msg}}
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% else %}
+                <div class="alert alert-success alter-dismissable fade show " role="alert">
+                {{msg}}
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+    <div class="w-screen h-screen overflow-x-hidden scroll-smooth">
+        <!-- res nav  -->
+        <nav class="p-2 bg-gray-100 shadow-md">
+            <div class="flex justify-between">
+                <!-- left  -->
+                <div class="space-x-2 flex items-center">
+                    <a href="#home"><img src="{{url_for('static',filename='img/govote.png')}}" class="w-12" alt=""></a>
+                    <a href="#home"><span>GoVote</span></a>
+                </div>
+                <!-- right -->
+                <button onclick="dropdown()" class="p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                      </svg>
+                    
+                </button>
+
+            </div>
+
+        </nav>
+
+        <!-- dropdown -->
+        <div class="hidden flex-col w-full  absolute right-4 pl-6" id="dropdown">
+            <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a href="#home">Home</a></span>
+            <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a  href="#about">About</a></span>
+            <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a href="">Notification</a></span>
+            <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a href="/logout">Logout</a></span>
+        </div>
+
+
+
+
+
+
+
+        <!-- navbar  -->
+        <nav class="p-2 hidden md:flex  justify-between bg-gray-100  shadow-md fixed top-0 w-full right-4" >
+            <!-- left  -->
+            <div class="flex space-x-5 items-center px-2">
+                
+                <div><a href="#home"><img src="{{url_for('static',filename='img/govote.png')}}" class="w-14 flex" alt=""></a></div>
+                <span><a href="#home">Home</a></span>
+                <span><a href="#about">About</a></span>
+                <span><a href="#categories">Categories</a></span>
+
+            </div>
+            <!-- right  -->
+            <div class="flex space-x-5 items-center px-2">
+                <!-- search  -->
+                <div class="flex items-center">
+                    <input type="text" placeholder="Search" class="w-36 p-2" name="" id="">
+                    <button class="p-2 bg-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 b" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                          </svg>
+                    </button>
+                </div>
+                <!-- name  -->
+                <span>SAJAL SHRESTHA</span>
+                <div><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                  </svg></div>
+                  <div onclick="dropdown2()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                  </div>
+
+            </div>
+        </nav>
+        <!-- dropdown2 -->
+        <div class="w-screen flex justify-end">
+            <div class="hidden flex-col absolute right-4 w-36 " id="dropdown2">
+                <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a href="#home">Home</a></span>
+                <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a  href="#about">About</a></span>
+                <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a href="">Notification</a></span>
+                <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a href="/logout">Logout</a></span>
+            </div>
+        </div>
+
+
+        <!-- heroimg  -->
+        <div class="pt-10">
+            <img src="{{url_for('static',filename='img/voter1.png')}}" class="w-screen md:h-screen flex justify-center" alt=""  id="home">
+        </div>
+        <!-- about  -->
+        <div class="w-screen h-screen flex justify-between" id="about">
+            <!-- left -->
+            <div class="w-1/2 hidden md:flex   items-center">
+                <img  src="{{url_for('static',filename='img/sanovoter.png')}}" class="w-2/3 ml-20 flex justify-center items-center" alt="">
+            </div>
+            <!-- right  -->
+            <div class="flex flex-col flex-1 p-10 md:p-20  space-y-5 text-justify md:items-center md:justify-center w-screen h-screen">
+                <div class="text-2xl md:text-4xl ">
+                    GoVote
+                </div>
+                <span>GoVote is online voting system to count vote automatically by computer. Founders of GoVote is Mr. Sajal Shrestha and the team. Lorem uo ut ea possimus ipsum, deserunt repellat dolorem est veniam laudantium, quibusdam totam praesentium? Accusantium!</span>
+                <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem, debitis. Voluptatibus, modi sequi provident corporis nostrum illum harum quidem nulla, in est sed illo iste.</span>
+                
+                <span class="hidden" id="seemore">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit in provident, soluta velit dolor, voluptates ipsam alias explicabo quos fugit reprehenderit inventore labore aspernatur quod!</span>
+                <div onclick="seemore()" id="seeless" class="cursor-pointer">See More</div>
+                <div class="w-full flex justify-center md:hidden">
+                    <img  src="{{url_for('static',filename='img/sanovoter.png')}}" class="w-96 flex  items-center" alt="">
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Categories  -->
+        <div class="bg-gray-100 lg:mx-20 pt-10  pb-20" id="categories">
+            <div class="text-center text-2xl md:text-4xl p-10">Categories</div>
+            <!-- grid  -->
+            <div class="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 items-center text-center xl:grid-cols-4 mx-20 bg-white">
+                <!-- colspan  -->
+                <div class="bg-gray-100 m-10 col-span-1 flex flex-col items-center p-10 ">
+                    <!-- logo  -->
+                    <div><img src="{{url_for('static',filename='img/logo1.png')}}"  class="rounded-full pb-3" alt=""></div>
+                    <a href="/participants"><span>Category1</span></a>
+                </div>
+                <!-- colspan  -->
+                <div class="bg-gray-100 m-10 col-span-1 p-10">
+                    <!-- logo  -->
+                    <div><img src="{{url_for('static',filename='img/logo2.png')}}"  class="rounded-full pb-3" alt=""></div>
+                    <a href="/participants"><span>Category2</span></a>
+                </div>
+                <!-- colspan  -->
+                <div class="bg-gray-100 m-10 col-span-1 p-10">
+                    <!-- logo  -->
+                    <div><img src="{{url_for('static',filename='img/logo3.jpg')}}"  class="rounded-full pb-3" alt=""></div>
+                    <a href="/participants"><span>Category3</span></a>
+                </div>
+                <!-- colspan  -->
+                <div class="bg-gray-100 m-10 col-span-1 p-10">
+                    <!-- logo  -->
+                    <div><img src="{{url_for('static',filename='img/logo4.png')}}"  class="rounded-full pb-3" alt=""></div>
+                    <a href="/participants"><span>Category4</span></a>
+                </div>
+                <!-- colspan  -->
+                <div class="bg-gray-100 m-10 col-span-1 p-10">
+                    <!-- logo  -->
+                    <div><img src="{{url_for('static',filename='img/logo5.jpg')}}"  class="rounded-full pb-3" alt=""></div>
+                    <a href="/participants"><span>Category5</span></a>
+                </div>
+                <!-- colspan  -->
+                <div class="bg-gray-100 m-10 col-span-1 p-10">
+                    <!-- logo  -->
+                    <div><img src="{{url_for('static',filename='img/logo6.png')}}"  class="rounded-full pb-3" alt=""></div>
+                    <a href="/participants"><span>Category6</span></a>
+                </div>
+                <!-- colspan  -->
+                <div class="bg-gray-100 m-10 col-span-1 p-10">
+                    <!-- logo  -->
+                    <div><img src="{{url_for('static',filename='img/logo7.webp')}}"  class="rounded-full pb-3" alt=""></div>
+                    <a href="/participants"><span>Category7</span></a>
+                </div>
+                <!-- colspan  -->
+                <div class="bg-gray-100 m-10 col-span-1 p-10">
+                    <!-- logo  -->
+                    <div><img src="{{url_for('static',filename='img/logo8.jpg')}}"  class="rounded-full pb-3" alt=""></div>
+                    <a href="/participants"><span>Category8</span></a>
+                </div>
+                <!-- colspan  -->
+                <div class="bg-gray-100 m-10 col-span-1 p-10">
+                    <!-- logo  -->
+                    <div><img src="{{url_for('static',filename='img/logo9.png')}}"  class="rounded-full pb-3" alt=""></div>
+                    <a href="/participants"><span>Category9</span></a>
+                </div>
+                <!-- colspan  -->
+                <div class="bg-gray-100 m-10 col-span-1 p-10">
+                    <!-- logo  -->
+                    <div><img src="{{url_for('static',filename='img/logo0.png')}}"  class="rounded-full pb-3" alt=""></div>
+                    <a href="/participants"><span>Category10</span></a>
+                </div>
+            </div>
+            
+
+        </div>
+        <!-- footer  -->
+        <footer class="flex flex-col space-y-2 p-10 ">
+            <div class="text-center flex justify-center space-x-2 md:space-x-5 text-xs md:text-sm">
+                <div><img src="{{url_for('static',filename='img/copyright.png')}}" class="w-6 h-6" alt=""></div>
+                <span>GoVote-Digital Voting system</span>
+                <span>All Right Reserved</span>
+            </div>
+            <div class="text-center flex justify-center space-x-2 md:space-x-5 text-xs md:text-sm">
+                <span>Privacy Policy</span>
+                <span>Terms of Use</span>
+                <span>Trademark Policy</span>
+            </div>
+        </footer>
+
+
+
+
+
+
+    </div>
+    
+
+</body>
+
+<script src="http://cdn-tailwindcss.vercel.app/"></script>
+    <script>
+        function seemore(){
+            var x=document.getElementById("seemore");
+            var y=document.getElementById("seeless");
+            if (x.style.display==="flex"){
+                x.style.display="none"
+                y.innerHTML="See More"
+            } else {
+                x.style.display="flex"
+                y.innerHTML="See Less"
+            }
+        }
+        
+    
+    
+        function dropdown(){
+            var x=document.getElementById("dropdown");
+            if (x.style.display==="flex"){
+                x.style.display="none"
+            }else{
+                x.style.display="flex"
+            }
+        }
+    
+        function dropdown2(){
+            var x=document.getElementById("dropdown2");
+            if (x.style.display==="flex"){
+                x.style.display="none"
+            }else{
+                x.style.display="flex"
+            }
+        }
+    
+    
+</script>
+</html>

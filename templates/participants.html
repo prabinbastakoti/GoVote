@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+</head>
+<body>
+    <div class="w-screen h-screen overflow-x-hidden scroll-smooth">
+
+        <!-- nav  -->
+        <!-- res nav  -->
+        <nav class="p-2 bg-gray-100 shadow-md">
+            <div class="flex justify-between">
+                <!-- left  -->
+                <div class="space-x-2 flex items-center">
+                    <a href="/home"><img src="{{url_for('static',filename='img/govote.png')}}" class="w-12" alt=""></a>
+                    <a href="/home"><span>GoVote</span></a>
+                </div>
+                <!-- right -->
+                <button onclick="dropdown()" class="p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                      </svg>
+                    
+                </button>
+
+            </div>
+
+        </nav>
+
+        <!-- dropdown -->
+        <div class="hidden flex-col w-full  absolute right-4 pl-6" id="dropdown">
+            <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a href="/home">Home</a></span>
+            <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a  href="#about">About</a></span>
+            <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a href="">Notification</a></span>
+            <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a href="/logout">Logout</a></span>
+        </div>
+
+
+
+
+
+
+
+        <!-- navbar  -->
+        <nav class="p-2 hidden md:flex  justify-between bg-gray-100  shadow-md fixed top-0 w-full right-4" >
+            <!-- left  -->
+            <div class="flex space-x-5 items-center px-2">
+                
+                <div><a href="/home"><img src="{{url_for('static',filename='img/govote.png')}}" class="w-14 flex" alt=""></a></div>
+                <span><a href="/home">Home</a></span>
+                <span><a href="#about">About</a></span>
+                <span><a href="#categories">Participant</a></span>
+
+            </div>
+            <!-- right  -->
+            <div class="flex space-x-5 items-center px-2">
+                <!-- search  -->
+                <div class="flex items-center">
+                    <input type="text" placeholder="Search" class="w-36 p-2" name="" id="">
+                    <button class="p-2 bg-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 b" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                          </svg>
+                    </button>
+                </div>
+                <!-- name  -->
+                <span>SAJAL SHRESTHA</span>
+                <div><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                  </svg></div>
+                  <div onclick="dropdown2()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                  </div>
+
+            </div>
+        </nav>
+        <!-- dropdown2 -->
+        <div class="w-screen flex justify-end">
+            <div class="hidden flex-col absolute right-4 w-36 " id="dropdown2">
+                <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a href="/home">Home</a></span>
+                <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a  href="#about">About</a></span>
+                <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a href="">Notification</a></span>
+                <span  class="bg-gray-100 hover:bg-gray-200 p-2"><a href="/logout">Logout</a></span>
+            </div>
+        </div>
+
+        <!-- image  -->
+        <div><img src="{{url_for('static',filename='img/votematter.png')}}" alt=""></div>
+
+        <!-- participants  -->
+        <div class="bg-gray-100 lg:mx-20 pt-10  pb-20" id="categories">
+            <div class="text-center text-2xl md:text-4xl p-10">Participants</div>
+            <!-- grid  -->
+            <div class="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 items-center text-center xl:grid-cols-4 mx-20 bg-white">
+                <!-- colspan  -->
+                <div class="hover:shadow-lg bg-gray-100 m-10 col-span-1 flex flex-col items-center py-3 rounded-md">
+                    <!-- logo  -->
+                    <div class="flex"><img src="{{url_for('static',filename='img/user.png')}}"  class="rounded-full p-3" alt=""></div>
+                    <div class="flex justify-between px-4 py-2 items-center w-full">
+                        <span>Participant1</span>
+                        <button class="p-2 bg-blue-600 hover:bg-red-600 text-white rounded" onclick="vote1()" id="vote1">Vote</button>
+                    </div>
+                </div>
+                <!-- colspan  -->
+                <div class="hover:shadow-lg bg-gray-100 m-10 col-span-1 flex flex-col items-center py-3 rounded-md">
+                    <!-- logo  -->
+                    <div class="flex"><img src="{{url_for('static',filename='img/user.png')}}"  class="rounded-full p-3" alt=""></div>
+                    <div class="flex justify-between px-4 py-2 items-center w-full">
+                        <span>Participant1</span>
+                        <button class="p-2 bg-blue-600 hover:bg-red-600 text-white rounded" onclick="vote2()" id="vote2">Vote</button>
+                    </div>
+                </div>
+                <!-- colspan  -->
+                <div class="hover:shadow-lg bg-gray-100 m-10 col-span-1 flex flex-col items-center py-3 rounded-md">
+                    <!-- logo  -->
+                    <div class="flex"><img src="{{url_for('static',filename='img/user.png')}}"  class="rounded-full p-3" alt=""></div>
+                    <div class="flex justify-between px-4 py-2 items-center w-full">
+                        <span>Participant1</span>
+                        <button class="p-2 bg-blue-600 hover:bg-red-600 text-white rounded"  onclick="vote3()" id="vote3">Vote</button>
+                    </div>
+                </div>
+                <!-- colspan  -->
+                <div class="hover:shadow-lg bg-gray-100 m-10 col-span-1 flex flex-col items-center py-3 rounded-md">
+                    <!-- logo  -->
+                    <div class="flex"><img src="{{url_for('static',filename='img/user.png')}}"  class="rounded-full p-3" alt=""></div>
+                    <div class="flex justify-between px-4 py-2 items-center w-full">
+                        <span>Participant1</span>
+                        <button class="p-2 bg-blue-600 hover:bg-red-600 text-white rounded" onclick="vote4()" id="vote4">Vote</button>
+                    </div>
+                </div>
+                <!-- colspan  -->
+                <div class="hover:shadow-lg bg-gray-100 m-10 col-span-1 flex flex-col items-center py-3 rounded-md">
+                    <!-- logo  -->
+                    <div class="flex"><img src="{{url_for('static',filename='img/user.png')}}"  class="rounded-full p-3" alt=""></div>
+                    <div class="flex justify-between px-4 py-2 items-center w-full">
+                        <span>Participant1</span>
+                        <button class="p-2 bg-blue-600 hover:bg-red-600 text-white rounded" onclick="vote5()" id="vote5">Vote</button>
+                    </div>
+                </div>
+                <!-- colspan  -->
+                <div class="hover:shadow-lg bg-gray-100 m-10 col-span-1 flex flex-col items-center py-3 rounded-md">
+                    <!-- logo  -->
+                    <div class="flex"><img src="{{url_for('static',filename='img/user.png')}}"  class="rounded-full p-3" alt=""></div>
+                    <div class="flex justify-between px-4 py-2 items-center w-full">
+                        <span>Participant1</span>
+                        <button class="p-2 bg-blue-600 hover:bg-red-600 text-white rounded" onclick="vote6()" id="vote6">Vote</button>
+                    </div>
+                </div>
+                <!-- colspan  -->
+                <div class="hover:shadow-lg bg-gray-100 m-10 col-span-1 flex flex-col items-center py-3 rounded-md">
+                    <!-- logo  -->
+                    <div class="flex"><img src="{{url_for('static',filename='img/user.png')}}"  class="rounded-full p-3" alt=""></div>
+                    <div class="flex justify-between px-4 py-2 items-center w-full">
+                        <span>Participant1</span>
+                        <button class="p-2 bg-blue-600 hover:bg-red-600 text-white rounded" onclick="vote7()" id="vote7">Vote</button>
+                    </div>
+                </div>
+                <!-- colspan  -->
+                <div class="hover:shadow-lg bg-gray-100 m-10 col-span-1 flex flex-col items-center py-3 rounded-md">
+                    <!-- logo  -->
+                    <div class="flex"><img src="{{url_for('static',filename='img/user.png')}}"  class="rounded-full p-3" alt=""></div>
+                    <div class="flex justify-between px-4 py-2 items-center w-full">
+                        <span>Participant1</span>
+                        <button class="p-2 bg-blue-600 hover:bg-red-600 text-white rounded" onclick="vote8()" id="vote8">Vote</button>
+                    </div>
+                </div>
+                <!-- colspan  -->
+                <div class="hover:shadow-lg bg-gray-100 m-10 col-span-1 flex flex-col items-center py-3 rounded-md">
+                    <!-- logo  -->
+                    <div class="flex"><img src="{{url_for('static',filename='img/user.png')}}"  class="rounded-full p-3" alt=""></div>
+                    <div class="flex justify-between px-4 py-2 items-center w-full">
+                        <span>Participant1</span>
+                        <button class="p-2 bg-blue-600 hover:bg-red-600 text-white rounded" onclick="vote9()" id="vote9">Vote</button>
+                    </div>
+                </div>
+                <!-- colspan  -->
+                <div class="hover:shadow-lg bg-gray-100 m-10 col-span-1 flex flex-col items-center py-3 rounded-md">
+                    <!-- logo  -->
+                    <div class="flex"><img src="{{url_for('static',filename='img/user.png')}}"  class="rounded-full p-3" alt=""></div>
+                    <div class="flex justify-between px-4 py-2 items-center w-full">
+                        <span>Participant1</span>
+                        <button class="p-2 bg-blue-600 hover:bg-red-600 text-white rounded" onclick="vote10()" id="vote10">Vote</button>
+                    </div>
+                </div>
+                
+
+                
+            </div>
+            
+
+        </div>
+        <!-- footer  -->
+        <footer class="flex flex-col space-y-2 p-10 ">
+            <div class="text-center flex justify-center space-x-2 md:space-x-5 text-xs md:text-sm">
+                <div><img src="{{url_for('static',filename='img/copywight.png')}}" class="w-6 h-6" alt=""></div>
+                <span>GoVote-Digital Voting system</span>
+                <span>All Right Reserved</span>
+            </div>
+            <div class="text-center flex justify-center space-x-2 md:space-x-5 text-xs md:text-sm">
+                <span>Privacy Policy</span>
+                <span>Terms of Use</span>
+                <span>Trademark Policy</span>
+            </div>
+        </footer>
+
+    </div>
+    
+</body>
+<script src="http://cdn-tailwindcss.vercel.app/"></script>
+<script>
+    function vote1(){
+    x=document.getElementById("vote1");
+    if (confirm("Are you sure to vote Participant1?")){
+        x.innerHTML="Voted"
+        x.style.backgroundColor="red"
+    }
+    }
+    function vote2(){
+    x=document.getElementById("vote2");
+    if (confirm("Are you sure to vote Participant2?")){
+        x.innerHTML="Voted"
+        x.style.backgroundColor="red"
+    }
+    }
+    function vote3(){
+    x=document.getElementById("vote3");
+    if (confirm("Are you sure to vote Participant3?")){
+        x.innerHTML="Voted"
+        x.style.backgroundColor="red"
+    }
+    }
+    function vote4(){
+    x=document.getElementById("vote4");
+    if (confirm("Are you sure to vote Participant4?")){
+        x.innerHTML="Voted"
+        x.style.backgroundColor="red"
+    }
+    }
+    function vote5(){
+    x=document.getElementById("vote5");
+    if (confirm("Are you sure to vote Participant5?")){
+        x.innerHTML="Voted"
+        x.style.backgroundColor="red"
+    }
+    }
+    function vote6(){
+    x=document.getElementById("vote6");
+    if (confirm("Are you sure to vote Participant6?")){
+        x.innerHTML="Voted"
+        x.style.backgroundColor="red"
+    }
+    }
+    function vote7(){
+    x=document.getElementById("vote7");
+    if (confirm("Are you sure to vote Participant7?")){
+        x.innerHTML="Voted"
+        x.style.backgroundColor="red"
+    }
+    }
+    function vote8(){
+    x=document.getElementById("vote8");
+    if (confirm("Are you sure to vote Participant8?")){
+        x.innerHTML="Voted"
+        x.style.backgroundColor="red"
+    }
+    }
+    function vote9(){
+    x=document.getElementById("vote9");
+    if (confirm("Are you sure to vote Participant9?")){
+        x.innerHTML="Voted"
+        x.style.backgroundColor="red"
+    }
+    }
+    function vote10(){
+    x=document.getElementById("vote10");
+    if (confirm("Are you sure to vote Participant10?")){
+        x.innerHTML="Voted"
+        x.style.backgroundColor="red"
+    }
+    }
+</script>
+</html>
